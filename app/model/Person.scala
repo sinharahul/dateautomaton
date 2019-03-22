@@ -1,5 +1,3 @@
 package model
 
-class Person(name:String) {
-
-}
+case class Person(name:String)

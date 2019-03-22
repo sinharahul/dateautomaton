@@ -1,5 +1,5 @@
 package model
 
-class Image {
+class Image(name:String) {
 
 }
