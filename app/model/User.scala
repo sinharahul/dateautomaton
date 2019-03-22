@@ -3,17 +3,27 @@ package model
 import model.Review.Review
 
 class User{
-  var loginProfile: LoginProfile=_
-  var person: Person=_
-  var location: Location=_
-  var feature: Feature=_
-  var image: Image = _
-  var hobbies: List[Hobbies]=_
-  var matches: List[Match]=_
-  var reviews: List[Review.Value]=_
-  var chats: List[Chat]=_
-}
-case class LoginProfile(userId:String,password:String,email:String)
-object User {
+  private var _loginProfile: LoginProfile=_
+  private var _person: Person=_
+  private var _location: Location=_
+  private var _feature: Feature=_
+  private var _image: Image = _
+  private var _hobbies: List[Hobbies]=_
+  private var _matches: List[Match]=_
+  private var _reviews: List[Review.Value]=_
+  private var _chats: List[Chat]=_
+
+  def isRegistered = _loginProfile != null
+  def person = _person
+  def person_= (newValue: Person): Unit = _person=newValue
 
 }
+object User {
+  def register(userName:String,password:String,email:String):User={
+    val user = new User
+    user._loginProfile = new LoginProfile(userName,password,email)
+    user
+  }
+}
+
+case class LoginProfile(userId:String,password:String,email:String)
